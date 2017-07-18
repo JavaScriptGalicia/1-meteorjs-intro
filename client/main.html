@@ -1,0 +1,45 @@
+<head>
+  <title>demo</title>
+</head>
+
+<body>
+  <div class="container">
+    {{> header}}
+    {{> mensaje}}
+    {{> contenido}}
+    {{> footer}}
+  </div>
+</body>
+
+<template name="mensaje">
+  {{#if currentUser}}
+    <div class="jumbotron">
+      <h1>Boas tardes</h1>
+      <p> <i class="fa fa-home"></i> {{currentUser.emails.[0].address}} </p>
+    </div>
+
+    {{> quickForm collection="Mensajes" id="iddeejemplo" type="insert"}}
+
+  {{else}}
+    <div class="jumbotron">
+      <h1>Regístrate ya!</h1>
+      <p> <i class="fa fa-home"></i> Home </p>
+    </div>
+  {{/if}}
+</template>
+
+<template name="contenido">
+  <div class="row marketing">
+    {{#each datos}}
+      <div class="col-lg-12">
+        <h4>{{mensaje}}</h4>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="footer">
+  <footer class="footer">
+    <p>© 2016 Company, Inc.</p>
+  </footer>
+</template>
